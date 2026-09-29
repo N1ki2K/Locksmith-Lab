@@ -1,0 +1,16 @@
+services:
+  database:
+    image: postgres:17
+    container_name: locksmith-postgres
+    environment:
+      POSTGRES_USER: locksmith
+      POSTGRES_PASSWORD: devpassword
+      POSTGRES_DB: securenotes
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:
