@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import authRouters from "./routes/authRoutes.js";
 import session from "express-session";
 import { authenticate } from "./middleware/authMiddleware.js";
+import noteRoutes from "./routes/noteRoutes.js";
 
 import { db } from "./database.js";
 
@@ -34,6 +35,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRouters);
+app.use("/api/notes", noteRoutes);
 
 app.get("/api/health", async (_req, res) => {
   try {
