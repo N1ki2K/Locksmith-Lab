@@ -2,11 +2,33 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRouters from "./routes/authRoutes.js";
+import session from "express-session";
+import { authenticate } from "./middleware/authMiddleware.js";
+
 import { db } from "./database.js";
 
 dotenv.config();
 
 const app = express();
+
+app.use(
+  session({
+    secret: "password123",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: false,
+      secure: false,
+    },
+  }),
+);
+
+app.get("/api/test-auth", authenticate, (req, res) => {
+  res.json({
+    message: "Authenticated",
+    userId: req.session.userId,
+  });
+});
 
 app.use(cors());
 app.use(express.json());

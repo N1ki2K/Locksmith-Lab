@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
 import { loginUser, registerUser } from "../services/authService.js";
+import { error } from "node:console";
 
 export async function register(req: Request, res: Response) {
   try {
@@ -44,6 +45,8 @@ export async function login(req: Request, res: Response) {
 
     const user = await loginUser(username, password);
 
+    req.session.userId = user.id;
+
     return res.status(200).json({
       message: "login successfull",
       user: {
@@ -63,4 +66,17 @@ export async function login(req: Request, res: Response) {
       error: "Internal server error",
     });
   }
+}
+
+export async function logout(req: Request, res: Response) {
+  req.session.destroy((error) => {
+    if (error) {
+      return res.status(500).json({
+        error: "Could not logout",
+      });
+    }
+    return res.status(200).json({
+      message: "Logout successfull",
+    });
+  });
 }
