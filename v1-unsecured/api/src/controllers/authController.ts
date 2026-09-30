@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import { registerUser } from "../services/authService.js";
+import { loginUser, registerUser } from "../services/authService.js";
 
 export async function register(req: Request, res: Response) {
   try {
@@ -24,6 +24,39 @@ export async function register(req: Request, res: Response) {
       });
     }
 
+    console.error(error);
+
+    return res.status(500).json({
+      error: "Internal server error",
+    });
+  }
+}
+
+export async function login(req: Request, res: Response) {
+  try {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+      return res.status(400).json({
+        error: "Username and password are required",
+      });
+    }
+
+    const user = await loginUser(username, password);
+
+    return res.status(200).json({
+      message: "login successfull",
+      user: {
+        id: user.id,
+        username: user.username,
+      },
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message === "INVALID_CREDENTIALS") {
+      return res.status(401).json({
+        error: "Invalid username or password",
+      });
+    }
     console.error(error);
 
     return res.status(500).json({

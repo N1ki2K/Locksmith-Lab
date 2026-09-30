@@ -13,3 +13,17 @@ export async function registerUser(username: string, password: string) {
 
   return createUser(username, password);
 }
+
+export async function loginUser(username: string, password: string) {
+  const user = await findUserByUsername(username);
+
+  if (!user) {
+    throw new Error("INVALID_CREDENTIALS");
+  }
+
+  if (user.password !== password) {
+    throw new Error("INVALID_CREDENTIALS");
+  }
+
+  return user;
+}
