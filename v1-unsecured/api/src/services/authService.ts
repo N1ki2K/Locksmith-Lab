@@ -1,8 +1,8 @@
 import {
   createUser,
   findUserByUsername,
+  findUserByCreadentials,
 } from "../repositories/userReposityry.js";
-
 export async function registerUser(username: string, password: string) {
   const existingUser = await findUserByUsername(username);
 
@@ -14,16 +14,11 @@ export async function registerUser(username: string, password: string) {
 }
 
 export async function loginUser(username: string, password: string) {
-  const user = await findUserByUsername(username);
+  const user = await findUserByCreadentials(username, password);
 
   if (!user) {
     throw new Error("INVALID_CREDENTIALS");
   }
-
-  if (user.password !== password) {
-    throw new Error("INVALID_CREDENTIALS");
-  }
-
   return user;
 }
 
