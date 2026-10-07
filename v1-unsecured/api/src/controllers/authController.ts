@@ -1,6 +1,9 @@
 import type { Request, Response } from "express";
-import { loginUser, registerUser } from "../services/authService.js";
-import { error } from "node:console";
+import {
+  loginUser,
+  logoutUser,
+  registerUser,
+} from "../services/authService.js";
 
 export async function register(req: Request, res: Response) {
   try {
@@ -69,14 +72,17 @@ export async function login(req: Request, res: Response) {
 }
 
 export async function logout(req: Request, res: Response) {
-  req.session.destroy((error) => {
-    if (error) {
-      return res.status(500).json({
-        error: "Could not logout",
-      });
-    }
+  try {
+    await logoutUser(req.session.destroy.bind(req.session));
+
     return res.status(200).json({
       message: "Logout successfull",
     });
-  });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      error: "Could not logout",
+    });
+  }
 }

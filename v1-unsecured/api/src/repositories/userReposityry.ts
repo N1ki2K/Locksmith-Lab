@@ -1,4 +1,3 @@
-import { warn } from "node:console";
 import { db } from "../database.js";
 
 export async function findUserByUsername(username: string) {
@@ -15,6 +14,15 @@ export async function createUser(username: string, password: string) {
     VALUES ($1, $2)
     RETURNING id, username, created_at `,
     [username, password],
+  );
+
+  return result.rows[0];
+}
+
+export async function findUserById(id: number) {
+  const result = await db.query(
+    "SELECT id, username, password, created_at FROM users WHERE id = $1",
+    [id],
   );
 
   return result.rows[0];

@@ -1,4 +1,3 @@
-import { asyncWrapProviders } from "async_hooks";
 import {
   createUser,
   findUserByUsername,
@@ -26,4 +25,19 @@ export async function loginUser(username: string, password: string) {
   }
 
   return user;
+}
+
+export async function logoutUser(
+  destroySession: (callback: (error?: Error) => void) => void,
+) {
+  return new Promise<void>((resolve, reject) => {
+    destroySession((error) => {
+      if (error) {
+        reject(new Error("LOGOUT_FAILED"));
+        return;
+      }
+
+      resolve();
+    });
+  });
 }
