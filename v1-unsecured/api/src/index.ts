@@ -40,9 +40,6 @@ app.get("/api/test-auth", authenticate, (req, res) => {
   });
 });
 
-app.use(cors());
-app.use(express.json());
-
 app.use("/api/auth", authRouters);
 app.use("/api/notes", noteRoutes);
 

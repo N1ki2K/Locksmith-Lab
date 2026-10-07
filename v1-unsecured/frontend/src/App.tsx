@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NotesPage from "./pages/NotesPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
@@ -18,11 +19,11 @@ export default function App() {
 
   if (page === "register") {
     return <RegisterPage onLogin={() => setPage("login")} />;
-
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-zync-950 text-white">
-        Notes page next
-      </div>
-    );
   }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-zinc-950 text-white">
+      <NotesPage onLogout={() => setPage("login")} />;
+    </div>
+  );
 }
