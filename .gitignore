@@ -1,0 +1,21 @@
+#Dependencies
+node_modules/
+
+#Build output
+dist/
+dist-ssr/
+
+#ENV files
+.env 
+.env.*
+!.env.example
+
+#Local test/session files
+cookies.txt
+
+#Logs
+*.log 
+npm-debug.log*
+
+#LoibreOffice temp lock files
+.~lock.*
