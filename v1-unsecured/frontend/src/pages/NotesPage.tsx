@@ -83,7 +83,7 @@ export default function NotePage({ onLogout }: Props) {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
-      <header className="border-b border-zinc-800 bg-zinc-900">
+      <header className="border-b border-zinc-800 bg-zinc-900/80">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.3em] text-emerald-400">
@@ -102,8 +102,8 @@ export default function NotePage({ onLogout }: Props) {
         </div>
       </header>
 
-      <main className="mx-auto grid max-w-6xl gap-8 px-8 lg:grid-cols-[350px_1fr]">
-        <section className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+      <main className="mx-auto grid w-full max-w-7xl gap-6 px-5 py-7 lg:grid-cols-[280px_minmax(0,1fr)]">
+        <section className="h-fit rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6">
           <h2 className="text-xl font-semibold">Create Note</h2>
 
           <form onSubmit={createNote} className="my-5 space-y-4">
@@ -125,7 +125,7 @@ export default function NotePage({ onLogout }: Props) {
 
             <button
               type="submit"
-              className="w-full rounded-lg bg-emerald-500 px-4 py-3 font-semibold text-zinc-950 transition hover:bg-emerald-400"
+              className="w-full rounded-lx bg-emerald-500 px-4 py-3 font-semibold text-zinc-950 transition hover:bg-emerald-400"
             >
               Create note
             </button>
@@ -134,7 +134,7 @@ export default function NotePage({ onLogout }: Props) {
           {message && <p className="mt-4 text-sm text-red-400">{message}</p>}
         </section>
 
-        <section>
+        <section className="mix-w-0">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-2xl font-semibold">My Notes</h2>
 
@@ -150,15 +150,16 @@ export default function NotePage({ onLogout }: Props) {
               {notes.map((note) => (
                 <article
                   key={note.id}
-                  className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5"
+                  className="min-w-0 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/70 p-5 transition hover:border-zinc-700"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-lg font-semibold">{note.title}</h3>
-
+                    <h3 className="truncate text-base font-semibold text-lg text-zinc-100">
+                      {note.title}
+                    </h3>
                     <span className="text-xs text-zinc-600">#{note.id}</span>
                   </div>
 
-                  <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-zinc-400">
+                  <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-zinc-400">
                     {note.content}
                   </p>
 

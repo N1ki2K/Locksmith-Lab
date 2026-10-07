@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-950 text-white">
-      <NotesPage onLogout={() => setPage("login")} />;
+      <NotesPage onLogout={() => setPage("login")} />
     </div>
   );
 }
