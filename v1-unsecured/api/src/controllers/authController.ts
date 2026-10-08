@@ -1,11 +1,11 @@
 import type { Request, Response } from "express";
 import {
-  loginUser,
-  logoutUser,
-  registerUser,
+  loginUser as loginUserService,
+  logoutUser as logoutUserService,
+  registerUser as registerUserService,
 } from "../services/authService.js";
 
-export async function register(req: Request, res: Response) {
+export async function registerUser(req: Request, res: Response) {
   try {
     const { username, password } = req.body;
 
@@ -15,7 +15,7 @@ export async function register(req: Request, res: Response) {
       });
     }
 
-    const user = await registerUser(username, password);
+    const user = await registerUserService(username, password);
 
     return res.status(201).json({
       message: "User created",
@@ -36,7 +36,7 @@ export async function register(req: Request, res: Response) {
   }
 }
 
-export async function login(req: Request, res: Response) {
+export async function loginUser(req: Request, res: Response) {
   try {
     const { username, password } = req.body;
 
@@ -46,12 +46,12 @@ export async function login(req: Request, res: Response) {
       });
     }
 
-    const user = await loginUser(username, password);
+    const user = await loginUserService(username, password);
 
     req.session.userId = user.id;
 
     return res.status(200).json({
-      message: "login successfull",
+      message: "Login successful",
       user: {
         id: user.id,
         username: user.username,
@@ -71,12 +71,12 @@ export async function login(req: Request, res: Response) {
   }
 }
 
-export async function logout(req: Request, res: Response) {
+export async function logoutUser(req: Request, res: Response) {
   try {
-    await logoutUser(req.session.destroy.bind(req.session));
+    await logoutUserService(req.session.destroy.bind(req.session));
 
     return res.status(200).json({
-      message: "Logout successfull",
+      message: "Logout successful",
     });
   } catch (error) {
     console.error(error);

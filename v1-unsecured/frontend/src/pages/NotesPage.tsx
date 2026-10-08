@@ -78,7 +78,29 @@ export default function NotePage({ onLogout }: Props) {
   }
 
   useEffect(() => {
-    loadNotes();
+    let cancelled = false;
+
+    async function loadInitialNotes() {
+      try {
+        const data = await apiRequest("/notes");
+
+        if (!cancelled) {
+          setNotes(data);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setMessage(
+            error instanceof Error ? error.message : "Could not load notes",
+          );
+        }
+      }
+    }
+
+    void loadInitialNotes();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

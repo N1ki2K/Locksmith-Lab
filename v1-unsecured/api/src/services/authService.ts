@@ -1,20 +1,20 @@
 import {
-  createUser,
-  findUserByUsername,
-  findUserByCreadentials,
-} from "../repositories/userReposityry.js";
+  create,
+  findByUsername,
+  findByCredentials,
+} from "../repositories/userRepository.js";
 export async function registerUser(username: string, password: string) {
-  const existingUser = await findUserByUsername(username);
+  const existingUser = await findByUsername(username);
 
   if (existingUser) {
     throw new Error("USERNAME_EXISTS");
   }
 
-  return createUser(username, password);
+  return create(username, password);
 }
 
 export async function loginUser(username: string, password: string) {
-  const user = await findUserByCreadentials(username, password);
+  const user = await findByCredentials(username, password);
 
   if (!user) {
     throw new Error("INVALID_CREDENTIALS");
