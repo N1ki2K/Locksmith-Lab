@@ -8,10 +8,10 @@ export async function findNotesByUserId(userId: number) {
   return result.rows;
 }
 
-export async function findNoteById(id: number) {
+export async function findNoteById(id: string) {
   const result = await db.query(`SELECT * FROM notes WHERE id = ${id}`);
 
-  return result.rows[0];
+  return result.rows;
 }
 
 export async function createNote(

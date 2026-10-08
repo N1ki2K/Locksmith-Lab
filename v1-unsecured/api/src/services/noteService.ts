@@ -10,14 +10,14 @@ export async function getUserNotes(userId: number) {
   return findNotesByUserId(userId);
 }
 
-export async function getNotesById(id: number) {
-  const note = await findNoteById(id);
+export async function getNotesById(id: string) {
+  const notes = await findNoteById(id);
 
-  if (!note) {
+  if (notes.length === 0) {
     throw new Error("NOTE_NOT_FOUND");
   }
 
-  return note;
+  return notes;
 }
 
 export async function addNote(userId: number, title: string, content: string) {

@@ -15,13 +15,13 @@ export async function getNotes(req: Request, res: Response) {
 
 export async function getNote(req: Request, res: Response) {
   try {
-    const note = await getNotesById(Number(req.params.id));
+    const note = await getNotesById(req.params.id);
 
     return res.json(note);
   } catch (error) {
     if (error instanceof Error && error.message === "NOTE_NOT_FOUND") {
       return res.status(404).json({
-        erorr: "Note not found",
+        error: "Note not found",
       });
     }
 
