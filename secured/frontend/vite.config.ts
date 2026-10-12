@@ -5,5 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: { host: "0.0.0.0", port: 5174, strictPort: true },
+  // Let Vite try the next available port if 5174 is already occupied.
+  server: { host: "0.0.0.0", port: 5174 },
 });
