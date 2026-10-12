@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT users_username_length CHECK (char_length(username) BETWEEN 3 AND 100)
+);
+
+CREATE TABLE IF NOT EXISTS notes (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  content VARCHAR(4000) NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT notes_title_nonempty CHECK (char_length(title) BETWEEN 1 AND 255),
+  CONSTRAINT notes_content_nonempty CHECK (char_length(content) BETWEEN 1 AND 4000)
+);
+
+CREATE INDEX IF NOT EXISTS notes_user_created_idx ON notes (user_id, created_at DESC);

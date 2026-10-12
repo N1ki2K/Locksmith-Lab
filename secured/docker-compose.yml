@@ -1,0 +1,22 @@
+services:
+  database:
+    image: postgres:17
+    container_name: locksmith-secured-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-locksmith_secured}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in secured/.env}
+      POSTGRES_DB: ${DB_NAME:-locksmith_secured}
+    ports:
+      - "${DB_PORT:-5433}:5432"
+    volumes:
+      - secured_postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-locksmith_secured} -d ${DB_NAME:-locksmith_secured}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  secured_postgres_data:
