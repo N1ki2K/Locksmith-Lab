@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<indexing>
+ <paragraph index="6" node_type="writer">Security Playground — Project Plan</paragraph>
+ <paragraph index="28" node_type="writer">Security Playground</paragraph>
+ <paragraph index="29" node_type="writer">Project Plan</paragraph>
+ <paragraph index="30" node_type="writer">Nikola Panayotov</paragraph>
+ <paragraph index="32" node_type="writer">Table of Contents</paragraph>
+ <object index="33" name="Table of Contents1" object_type="section"/>
+ <paragraph index="34" node_type="writer" parent_index="33">1 Problem and Context	2</paragraph>
+ <paragraph index="35" node_type="writer" parent_index="33">2 Proposed Solution (Project Description)	2</paragraph>
+ <paragraph index="36" node_type="writer" parent_index="33">3 Project Goals	2</paragraph>
+ <paragraph index="37" node_type="writer" parent_index="33">4 Scope and Constraints	2</paragraph>
+ <paragraph index="38" node_type="writer" parent_index="33">5 Project Approach	3</paragraph>
+ <paragraph index="39" node_type="writer" parent_index="33">6 Project Planning	3</paragraph>
+ <paragraph index="40" node_type="writer" parent_index="33">7 Expected Deliverables	4</paragraph>
+ <paragraph index="41" node_type="writer" parent_index="33">References	4</paragraph>
+ <paragraph index="45" node_type="writer">1 Problem and Context</paragraph>
+ <paragraph index="46" node_type="writer">Web applications and servers are attacked every day, and many successful attacks use common weaknesses such as weak authentication, missing access control, unsafe input handling and insecure network configuration (OWASP Foundation, 2021). Reading about these weaknesses does not show how they behave in practice, and testing them on live systems would be unsafe. A controlled environment is needed in which an application can be attacked on purpose and then secured.</paragraph>
+ <paragraph index="47" node_type="writer">The challenge question for this project is: how can a basic networked web application be built within the EDU Cloud, attacked, and improved using fundamental Linux or Windows tools? The project has not started yet. The exact application, the weaknesses to be tested and the tools allowed in the EDU Cloud still have to be defined. Defining them is the first part of the work.</paragraph>
+ <paragraph index="48" node_type="writer">The parties involved are the client, who receives the results, and the developer, who carries out the project. The intended end users of the application still have to be defined and will be confirmed with the client.</paragraph>
+ <paragraph index="49" node_type="writer">2 Proposed Solution (Project Description)</paragraph>
+ <paragraph index="50" node_type="writer">Security Playground is a project in which a small networked web application is built, attacked in a safe environment, improved, and tested again. The first idea is a simple application, SecureNotes, where users can create an account, log in and manage personal notes. This idea is not final and will be confirmed or changed in the Analysis.</paragraph>
+ <paragraph index="51" node_type="writer">The plan is to make two versions of the application. The unsecured version will be intentionally weak and will run only in an isolated environment, so that its weaknesses can be seen and tested. The secured version will be the improved version, with a fix for every finding. Both versions will be tested in the same way so that the results can be compared. The technologies and tools for building and testing the application have not been chosen yet. The options will be compared and chosen in the Advise activity.</paragraph>
+ <paragraph index="52" node_type="writer">3 Project Goals</paragraph>
+ <paragraph index="53" node_type="writer">The overall goal is to show, through practice, how a web application and its server become vulnerable and how they are secured. To reach this goal, the project has the following goals.</paragraph>
+ <object index="54" name="Table1" object_type="table"/>
+ <paragraph index="56" node_type="writer" parent_index="54">No.</paragraph>
+ <paragraph index="59" node_type="writer" parent_index="54">Goal</paragraph>
+ <paragraph index="62" node_type="writer" parent_index="54">What it means</paragraph>
+ <paragraph index="65" node_type="writer" parent_index="54">G1</paragraph>
+ <paragraph index="68" node_type="writer" parent_index="54">Develop a working web application.</paragraph>
+ <paragraph index="71" node_type="writer" parent_index="54">A small application with user accounts and personal notes that works in a safe, isolated environment.</paragraph>
+ <paragraph index="74" node_type="writer" parent_index="54">G2</paragraph>
+ <paragraph index="77" node_type="writer" parent_index="54">Identify and demonstrate security vulnerabilities.</paragraph>
+ <paragraph index="80" node_type="writer" parent_index="54">Find common web and network weaknesses in the unsecured version and show them with evidence.</paragraph>
+ <paragraph index="83" node_type="writer" parent_index="54">G3</paragraph>
+ <paragraph index="86" node_type="writer" parent_index="54">Secure the application.</paragraph>
+ <paragraph index="89" node_type="writer" parent_index="54">Fix every demonstrated vulnerability in the secured version.</paragraph>
+ <paragraph index="92" node_type="writer" parent_index="54">G4</paragraph>
+ <paragraph index="95" node_type="writer" parent_index="54">Verify that the security improvements work.</paragraph>
+ <paragraph index="98" node_type="writer" parent_index="54">Test the secured version with the same test cases and compare it with the unsecured version.</paragraph>
+ <paragraph index="101" node_type="writer" parent_index="54">G5</paragraph>
+ <paragraph index="104" node_type="writer" parent_index="54">Run the application safely.</paragraph>
+ <paragraph index="107" node_type="writer" parent_index="54">Run the unsecured version only in an isolated environment and the secured version on a protected server.</paragraph>
+ <paragraph index="110" node_type="writer" parent_index="54">G6</paragraph>
+ <paragraph index="113" node_type="writer" parent_index="54">Document the work so that it can be repeated.</paragraph>
+ <paragraph index="116" node_type="writer" parent_index="54">Document the findings, fixes and results clearly, so that someone else can reproduce them.</paragraph>
+ <paragraph index="120" node_type="writer">4 Scope and Constraints</paragraph>
+ <paragraph index="121" node_type="writer">The scope is deliberately small so that there is enough time to test and improve, not only to build. The initial scope is one user role, simple user accounts and personal notes, and one deployment per environment. Testing will focus on common web and network weaknesses (OWASP Foundation, 2021). The exact list of functions and weaknesses will be defined in the Analysis.</paragraph>
+ <paragraph index="122" node_type="writer">Features that need a lot of time but add little to the project goals are outside the scope, for example note sharing, file uploads, email functions, multiple user roles, high availability, custom exploits, malware and denial-of-service tests. Optional extras will only be considered if the core work is finished.</paragraph>
+ <paragraph index="123" node_type="writer">The following constraints apply. The unsecured version must never be exposed to the public internet and will only run in the EDU Cloud, a local virtual machine or an isolated network. Only systems that belong to the client or are provided for this project will be scanned or attacked. The tools that can be used depend on the rules of the EDU Cloud, which still have to be confirmed. The main risks at the start of the project are listed below.</paragraph>
+ <object index="124" name="Table2" object_type="table"/>
+ <paragraph index="126" node_type="writer" parent_index="124">Risk</paragraph>
+ <paragraph index="129" node_type="writer" parent_index="124">Effect</paragraph>
+ <paragraph index="132" node_type="writer" parent_index="124">Response</paragraph>
+ <paragraph index="135" node_type="writer" parent_index="124">EDU Cloud restrictions on tools or access</paragraph>
+ <paragraph index="138" node_type="writer" parent_index="124">Planned tests cannot be carried out.</paragraph>
+ <paragraph index="141" node_type="writer" parent_index="124">Ask for the rules early and confirm them with the client. Keep a local virtual machine as a fallback.</paragraph>
+ <paragraph index="144" node_type="writer" parent_index="124">Scope growth</paragraph>
+ <paragraph index="147" node_type="writer" parent_index="124">Extra features leave less time for testing.</paragraph>
+ <paragraph index="150" node_type="writer" parent_index="124">Keep the scope small and finish the core work first.</paragraph>
+ <paragraph index="153" node_type="writer" parent_index="124">Too little time for retesting</paragraph>
+ <paragraph index="156" node_type="writer" parent_index="124">The secured version cannot be compared fairly with the unsecured version.</paragraph>
+ <paragraph index="159" node_type="writer" parent_index="124">Write the test cases before testing, record evidence while working and keep to the hours planned per activity.</paragraph>
+ <paragraph index="162" node_type="writer" parent_index="124">Unclear requirements or late feedback</paragraph>
+ <paragraph index="165" node_type="writer" parent_index="124">Work may have to be redone.</paragraph>
+ <paragraph index="168" node_type="writer" parent_index="124">Confirm scope and goals with the client after the Analysis and after the Design.</paragraph>
+ <paragraph index="172" node_type="writer">5 Project Approach</paragraph>
+ <paragraph index="173" node_type="writer">The project will follow five activities in order: Analyse, Advise, Design, Realise and Validate. Each activity builds on the result of the previous one, so every decision can be traced back to the problem and every test back to a requirement.</paragraph>
+ <paragraph index="174" node_type="writer">First, the problem will be analysed, the scope and requirements defined and the EDU Cloud rules confirmed with the client. Then the technology options will be compared and a solution proposed. After that, the application, the environment and the test cases will be designed. In the Realise activity the unsecured version will be built first, in small steps, followed by the secured version. In the Validate activity both versions will be tested with the same test cases and the results compared, following a structured approach of planning, execution and reporting (Scarfone et al., 2008).</paragraph>
+ <paragraph index="175" node_type="writer">Notes and evidence will be kept while the work is done instead of being written afterwards. Client feedback will be requested after the Analysis and after the Design.</paragraph>
+ <paragraph index="176" node_type="writer">6 Project Planning</paragraph>
+ <paragraph index="177" node_type="writer">The table below shows the planned time for each activity.</paragraph>
+ <object index="178" name="Table3" object_type="table"/>
+ <paragraph index="180" node_type="writer" parent_index="178">Activity</paragraph>
+ <paragraph index="183" node_type="writer" parent_index="178">Hours</paragraph>
+ <paragraph index="186" node_type="writer" parent_index="178">Analyse</paragraph>
+ <paragraph index="189" node_type="writer" parent_index="178">20 h</paragraph>
+ <paragraph index="192" node_type="writer" parent_index="178">Advise</paragraph>
+ <paragraph index="195" node_type="writer" parent_index="178">15 h</paragraph>
+ <paragraph index="198" node_type="writer" parent_index="178">Design</paragraph>
+ <paragraph index="201" node_type="writer" parent_index="178">25 h</paragraph>
+ <paragraph index="204" node_type="writer" parent_index="178">Realise</paragraph>
+ <paragraph index="207" node_type="writer" parent_index="178">55 h</paragraph>
+ <paragraph index="210" node_type="writer" parent_index="178">Validate</paragraph>
+ <paragraph index="213" node_type="writer" parent_index="178">25 h</paragraph>
+ <paragraph index="217" node_type="writer">7 Expected Deliverables</paragraph>
+ <paragraph index="218" node_type="writer">At the end of the project the following will be delivered.</paragraph>
+ <object index="219" name="Table4" object_type="table"/>
+ <paragraph index="221" node_type="writer" parent_index="219">Deliverable</paragraph>
+ <paragraph index="224" node_type="writer" parent_index="219">What is delivered</paragraph>
+ <paragraph index="227" node_type="writer" parent_index="219">1. SecureNotes Unsecured</paragraph>
+ <paragraph index="230" node_type="writer" parent_index="219">A working, intentionally vulnerable web application with registration, login and CRUD functionality for notes.</paragraph>
+ <paragraph index="233" node_type="writer" parent_index="219">2. SecureNotes Secured</paragraph>
+ <paragraph index="236" node_type="writer" parent_index="219">A secured version of the same application with fixes for the demonstrated vulnerabilities.</paragraph>
+ <paragraph index="239" node_type="writer" parent_index="219">3. Source Code</paragraph>
+ <paragraph index="242" node_type="writer" parent_index="219">A GitHub repository containing both versions, including frontend, backend and database code.</paragraph>
+ <paragraph index="245" node_type="writer" parent_index="219">4. Deployment</paragraph>
+ <paragraph index="248" node_type="writer" parent_index="219">Docker configuration for running the application and a working secured deployment on the Ubuntu VPS behind Nginx.</paragraph>
+ <paragraph index="251" node_type="writer" parent_index="219">5. Security Test Results</paragraph>
+ <paragraph index="254" node_type="writer" parent_index="219">Evidence of vulnerabilities in the unsecured version and retesting after fixes in the secured version, including screenshots, test cases and results.</paragraph>
+ <paragraph index="257" node_type="writer" parent_index="219">6. Technical Documentation</paragraph>
+ <paragraph index="260" node_type="writer" parent_index="219">Architecture diagrams, DB_Diagrams, configuration instructions and an explanation of the security improvements.</paragraph>
+ <paragraph index="263" node_type="writer" parent_index="219">7. Final Report</paragraph>
+ <paragraph index="266" node_type="writer" parent_index="219">A comparison of the unsecured and secured versions, with conclusions and recommendations.</paragraph>
+ <paragraph index="270" node_type="writer">What does the client actually receive?</paragraph>
+ <object index="271" name="Table5" object_type="table"/>
+ <paragraph index="273" node_type="writer" parent_index="271">Item</paragraph>
+ <paragraph index="276" node_type="writer" parent_index="271">Content</paragraph>
+ <paragraph index="279" node_type="writer" parent_index="271">GitHub Repository</paragraph>
+ <paragraph index="282" node_type="writer" parent_index="271">Source code, configurations and instructions.</paragraph>
+ <paragraph index="285" node_type="writer" parent_index="271">Working Web Application</paragraph>
+ <paragraph index="288" node_type="writer" parent_index="271">The unsecured version running in an isolated environment and the secured version accessible through the VPS deployment.</paragraph>
+ <paragraph index="291" node_type="writer" parent_index="271">Security Assessment</paragraph>
+ <paragraph index="294" node_type="writer" parent_index="271">Documented vulnerabilities, proof-of-concept tests, applied fixes and before-and-after test results.</paragraph>
+ <paragraph index="298" node_type="writer">References</paragraph>
+ <paragraph index="299" node_type="writer">OWASP Foundation. (2021). OWASP Top 10:2021. https://owasp.org/Top10/</paragraph>
+ <paragraph index="300" node_type="writer">Scarfone, K., Souppaya, M., Cody, A., &amp; Orebaugh, A. (2008). Technical guide to information security testing and assessment (NIST Special Publication 800-115). National Institute of Standards and Technology. https://csrc.nist.gov/pubs/sp/800/115/final</paragraph>
+</indexing>
